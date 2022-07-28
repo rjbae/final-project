@@ -5,6 +5,8 @@ import NavBar from './components/navbar';
 import parseRoute from './lib/parse-route';
 import Auth from './pages/auth';
 import AppContext from './lib/app-context';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default class App extends React.Component {
   constructor(props) {
