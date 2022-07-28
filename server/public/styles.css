@@ -1,0 +1,34 @@
+.navbar {
+  background-color: #faedca;
+}
+
+.home-img-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.home-img {
+  height: 700px;
+}
+
+.search-container {
+  background-color: #faedca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 4rem;
+}
+
+.location-search {
+  width: 40rem;
+  text-align: center;
+  border: none;
+  margin-left: 5rem;
+  margin-right: 5rem;
+}
+
+.bi-camera {
+  font-size: 1.5rem;
+}
