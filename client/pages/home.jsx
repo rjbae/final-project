@@ -1,7 +1,6 @@
 import React from 'react';
 import AppContext from '../lib/app-context';
 import Redirect from '../components/redirect';
-import 'bootstrap-icons/font/bootstrap-icons.css';
 
 export default class Home extends React.Component {
   render() {
