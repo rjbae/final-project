@@ -13,7 +13,7 @@ export default function NavBar() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="#login">Log In</Nav.Link>
+              <Nav.Link href="#sign-in">Log In</Nav.Link>
               <Nav.Link href="#sign-up">Sign Up</Nav.Link>
             </Nav>
           </Navbar.Collapse>

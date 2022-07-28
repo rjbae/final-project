@@ -1,8 +1,10 @@
 import React from 'react';
 import AppContext from '../lib/app-context';
+import 'bootstrap-icons/font/bootstrap-icons.css';
 
-export default function Home(props) {
-  return (
+export default class Home extends React.Component {
+  render() {
+    return (
     <>
       <div className='row'>
         <div className='home-img-container'>
@@ -11,11 +13,13 @@ export default function Home(props) {
       </div>
       <div className='row'>
         <div className='search-container'>
-          <input type='text' className='location-search' placeholder='Search by location...'></input>
+            <input type='text' className='location-search' placeholder='Search by location...'></input>
+            <button className='search-button'><i className='bi bi-search'></i></button>
         </div>
       </div>
     </>
-  );
+    );
+  }
 }
 
 Home.contextType = AppContext;

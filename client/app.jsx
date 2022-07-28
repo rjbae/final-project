@@ -3,8 +3,8 @@ import Home from './pages/home';
 import jwtDecode from 'jwt-decode';
 import NavBar from './components/navbar';
 import parseRoute from './lib/parse-route';
-import AuthForm from './components/auth-form';
-// import AppContext from './lib/app-context';
+import AuthPage from './pages/auth';
+import AppContext from './lib/app-context';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -44,17 +44,23 @@ export default class App extends React.Component {
     if (route.path === 'home') {
       return <Home />;
     }
-    if (route.path === 'sign-up' || route.path === 'login') {
-      return <AuthForm />;
+    if (route.path === 'sign-up' || route.path === 'sign-in') {
+      return <AuthPage />;
     }
   }
 
   render() {
+    if (this.state.isAuthorizing) return null;
+    const { user, route } = this.state;
+    const { handleSignIn, handleSignOut } = this;
+    const contextValue = { user, route, handleSignIn, handleSignOut };
     return (
+      <AppContext.Provider value={contextValue}>
         <>
           <NavBar />
           { this.renderPage() }
         </>
+      </AppContext.Provider>
     );
 
   }
