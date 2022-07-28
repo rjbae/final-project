@@ -1,6 +1,7 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
+import AppContext from '../lib/app-context';
 
 export default class AuthForm extends React.Component {
   constructor(props) {
@@ -97,5 +98,6 @@ export default class AuthForm extends React.Component {
       </Container>
     );
   }
-
 }
+
+AuthForm.contextType = AppContext;

@@ -3,7 +3,7 @@ import Home from './pages/home';
 import jwtDecode from 'jwt-decode';
 import NavBar from './components/navbar';
 import parseRoute from './lib/parse-route';
-import AuthPage from './pages/auth';
+import Auth from './pages/auth';
 import AppContext from './lib/app-context';
 
 export default class App extends React.Component {
@@ -45,7 +45,7 @@ export default class App extends React.Component {
       return <Home />;
     }
     if (route.path === 'sign-up' || route.path === 'sign-in') {
-      return <AuthPage />;
+      return <Auth />;
     }
   }
 
