@@ -8,7 +8,7 @@ export default function NavBar() {
     <>
       <Navbar className='navbar' expand='lg'>
         <Container>
-          <Navbar.Brand>Location Captures <i className='bi bi-camera'></i></Navbar.Brand>
+          <Navbar.Brand>Location Captures <i className="fas fa-camera me-2" /></Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
