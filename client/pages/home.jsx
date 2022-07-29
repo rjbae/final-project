@@ -4,7 +4,8 @@ import Redirect from '../components/redirect';
 
 export default class Home extends React.Component {
   render() {
-    if (!this.context.user) return <Redirect to="sign-in" />;
+    if (!this.context.user) return <Redirect to='sign-in'/>;
+
     return (
     <>
       <div className='row'>
