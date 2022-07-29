@@ -8,7 +8,7 @@ export default class AuthPage extends React.Component {
 
     const { user, route, handleSignIn } = this.context;
 
-    if (user) return <Redirect to="#home" />;
+    if (user) return <Redirect to='' />;
 
     const welcomeMessage = route.path === 'sign-in'
       ? 'Please sign in to continue'
@@ -18,8 +18,8 @@ export default class AuthPage extends React.Component {
         <div className="col-12 offset-0 col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-xl-4 offset-xl-4">
           <header className="text-center">
             <h2 className="mb-2">
-              Location Captures
               <i className="fas fa-camera me-2" />
+              Location Captures
             </h2>
             <p className="text-muted mb-4">{welcomeMessage}</p>
           </header>
