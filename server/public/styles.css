@@ -42,3 +42,7 @@
 .authform-header {
   text-align: center;
 }
+
+.fa-plus {
+  cursor: pointer;
+}

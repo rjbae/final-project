@@ -9,11 +9,11 @@ export default class NavBar extends React.Component {
     <>
       <Navbar className='navbar' expand='lg'>
         <Container>
-          <Navbar.Brand href='#'><i className="fas fa-camera me-2" />Location Captures</Navbar.Brand>
+          <Navbar.Brand href='#home'><i className="fas fa-camera me-2" />Location Captures</Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
-                <Nav.Link href='#'>Home</Nav.Link>
+                <Nav.Link href='#home'>Home</Nav.Link>
                 {user !== null &&
                 <>
                   <Nav.Link href='#favorites'>Favorites</Nav.Link>
