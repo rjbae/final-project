@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from './pages/home';
 import MyProfile from './pages/my-profile';
+import CreatePost from './components/create-post';
 import jwtDecode from 'jwt-decode';
 import NavBar from './components/navbar';
 import parseRoute from './lib/parse-route';
@@ -52,6 +53,9 @@ export default class App extends React.Component {
     }
     if (route.path === 'my-profile') {
       return <MyProfile />;
+    }
+    if (route.path === 'create-post') {
+      return <CreatePost />;
     }
   }
 

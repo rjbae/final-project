@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const errorMiddleWare = require('./error-middleware');
 const ClientError = require('./client-error');
 const authorizationMiddleware = require('./authorization-middleware');
+// const uploadsMiddleware = require('./uploads-middleware');
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
