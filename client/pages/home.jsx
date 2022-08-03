@@ -10,7 +10,7 @@ export default class Home extends React.Component {
     <>
       <div className='row'>
         <div className='home-img-container'>
-          <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Central_Californian_Coastline%2C_Big_Sur_-_May_2013.jpg/1200px-Central_Californian_Coastline%2C_Big_Sur_-_May_2013.jpg' className='home-img'></img>
+            <img src='https://lh3.googleusercontent.com/pw/AL9nZEWZoZh9HJMlsFUGpPSHucl0acABYhnFO8H3PAJCdULs4zcBwlSjPC2qY87_tEy0TN7vRWK9OMWdjKqe4QTZUvbWvrugcTaH_HiwwgIzM291cez65sHwszgPnGFY0fMtw52fh1Ic_AL6eBiCWsBqZ4yS=w1109-h905-no?authuser=0' className='home-img'></img>
         </div>
       </div>
       <div className='row'>

@@ -5,6 +5,7 @@ export default class CreatePost extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      previewImg: 'https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png',
       location: '',
       cameraUsed: '',
       feedback: '',
@@ -13,7 +14,7 @@ export default class CreatePost extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handlePhotoChange = this.handlePhotoChange.bind(this);
+    this.handlePhotoChange = this.handlePhotoChange.bind(this);
     this.fileInputRef = React.createRef();
   }
 
@@ -23,6 +24,10 @@ export default class CreatePost extends React.Component {
 
   handleInputChange(event) {
     this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handlePhotoChange(event) {
+    this.setState({ previewImg: URL.createObjectURL(event.target.files[0]) });
   }
 
   handleSubmit(event) {
@@ -36,6 +41,7 @@ export default class CreatePost extends React.Component {
     formData.append('cameraUsed', this.state.cameraUsed);
     formData.append('locationName', this.state.location);
     formData.append('photoUrl', this.state.photoUrl);
+    formData.append('previewImg', this.state.previewImg);
 
     fetch('/api/posts', {
       method: 'POST',
@@ -51,7 +57,8 @@ export default class CreatePost extends React.Component {
           photoUrl: '',
           cameraUsed: '',
           feedback: '',
-          location: ''
+          location: '',
+          previewImg: 'https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png'
         });
         this.fileInputRef.current.value = null;
       });
@@ -61,10 +68,10 @@ export default class CreatePost extends React.Component {
     return (
       <div className='form-container'>
         <h2 className='create-post-header'>Create a Post</h2>
-        <img src='https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png' className='placeholder-img'></img>
+        <img src={this.state.previewImg} className='placeholder-img'></img>
         <form className='create-post-form' onSubmit={this.handleSubmit}>
           <div className='row file-upload'>
-          <input type='file' id='photo' accept=".png, .jpeg, .jpg" ref={this.fileInputRef} name='photoUrl' onChange={this.handleInputChange}></input>
+          <input type='file' id='photo' accept=".png, .jpeg, .jpg" ref={this.fileInputRef} name='photoUrl' onChange={this.handlePhotoChange}></input>
           </div>
           <div className='row'>
           <label>Location:</label>
