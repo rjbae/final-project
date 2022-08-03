@@ -65,6 +65,7 @@
 /* Create Post Form */
 
 .create-post-header {
+  text-align: center;
   margin-top: 1rem;
 }
 
@@ -85,6 +86,7 @@
 
 .create-post-form input {
   margin-top: 0.5rem;
+  border-radius: 5px;
 }
 
 .create-post-form button {
@@ -101,12 +103,18 @@
 .form-container {
   margin: auto;
   width: 390px;
+  padding-bottom: 5rem;
 }
 
 .suggestion-list {
   cursor: pointer;
+  border: 1px solid black;
 }
 
 .suggestion-list:hover {
   background-color: lightgray;
+}
+
+.file-upload {
+  padding-left: 6rem;
 }

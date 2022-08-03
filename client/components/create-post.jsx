@@ -8,10 +8,13 @@ export default class CreatePost extends React.Component {
       location: '',
       cameraUsed: '',
       feedback: '',
-      imgUrl: null
+      photoUrl: ''
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handlePhotoChange = this.handlePhotoChange.bind(this);
+    this.fileInputRef = React.createRef();
   }
 
   handleChange(location) {
@@ -19,11 +22,39 @@ export default class CreatePost extends React.Component {
   }
 
   handleInputChange(event) {
-    const target = event.target;
-    const name = target.name;
-    if (target.type === 'text') {
-      this.setState({ [name]: event.target.value });
-    }
+    this.setState({ [event.target.name]: event.target.value });
+  }
+
+  handleSubmit(event) {
+    alert('Your post was successful.');
+    // console.log(this.state);
+    event.preventDefault();
+    const formData = new FormData();
+
+    formData.append('feedback', this.state.feedback);
+    formData.append('image', this.fileInputRef.current.files[0]);
+    formData.append('cameraUsed', this.state.cameraUsed);
+    formData.append('locationName', this.state.location);
+    formData.append('photoUrl', this.state.photoUrl);
+
+    fetch('/api/posts', {
+      method: 'POST',
+      headers: {
+        'X-Access-Token': localStorage.getItem('react-context-jwt')
+      },
+      body: formData
+    })
+      .then(res => res.json())
+      .then(result => {
+        // console.log(result);
+        this.setState({
+          photoUrl: '',
+          cameraUsed: '',
+          feedback: '',
+          location: ''
+        });
+        this.fileInputRef.current.value = null;
+      });
   }
 
   render() {
@@ -31,9 +62,9 @@ export default class CreatePost extends React.Component {
       <div className='form-container'>
         <h2 className='create-post-header'>Create a Post</h2>
         <img src='https://wtwp.com/wp-content/uploads/2015/06/placeholder-image.png' className='placeholder-img'></img>
-        <form className='create-post-form'>
-          <div className='row'>
-          <input type='file'></input>
+        <form className='create-post-form' onSubmit={this.handleSubmit}>
+          <div className='row file-upload'>
+          <input type='file' id='photo' accept=".png, .jpeg, .jpg" ref={this.fileInputRef} name='photoUrl' onChange={this.handleInputChange}></input>
           </div>
           <div className='row'>
           <label>Location:</label>
@@ -44,7 +75,7 @@ export default class CreatePost extends React.Component {
               {({ getInputProps, suggestions, getSuggestionItemProps, loading }) =>
                 (
                 <React.Fragment>
-                <input {...getInputProps()}/>
+                <input {...getInputProps()} name='location' required/>
                   {suggestions.map(suggestion => {
                     return (
                     <div key={suggestions.description} { ...getSuggestionItemProps(suggestion) } className='suggestion-list'>
@@ -59,11 +90,11 @@ export default class CreatePost extends React.Component {
           </div>
           <div className='row'>
           <label>Camera Used:</label>
-            <input type='text' name='cameraUsed' onChange={this.handleInputChange}></input>
+            <input type='text' id='cameraUsed' name='cameraUsed' onChange={this.handleInputChange} value={this.state.cameraUsed} required></input>
           </div>
           <div className='row'>
             <label>Feedback:</label>
-            <textarea type='text' className='feedback-text' name='feedback' onChange={this.handleInputChange}></textarea>
+            <textarea className='feedback-text' id='feedback' name='feedback' onChange={this.handleInputChange} value={this.state.feedback} required></textarea>
           </div>
           <button type='submit'>POST</button>
         </form>

@@ -32,4 +32,4 @@ CREATE TABLE "public"."locations" (
   OIDS=FALSE
 );
 ALTER TABLE "posts" ADD CONSTRAINT "posts_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
-ALTER TABLE "posts" ADD CONSTRAINT "posts_fk1" FOREIGN KEY ("locationId") REFERENCES "locations"("locationId");
+-- ALTER TABLE "posts" ADD CONSTRAINT "posts_fk1" FOREIGN KEY ("locationId") REFERENCES "locations"("locationId");
