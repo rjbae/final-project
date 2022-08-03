@@ -42,3 +42,79 @@
 .authform-header {
   text-align: center;
 }
+
+.fa-plus {
+  cursor: pointer;
+  color: black;
+}
+
+.profile-header {
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+.post-header {
+  margin-right: 2rem;
+  margin-top: 1rem;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Create Post Form */
+
+.create-post-header {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.placeholder-img {
+  width: 400px;
+}
+
+.create-post-form label {
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+.create-post-form textarea {
+  resize: none;
+  height: 200px;
+  margin-top: 0.5rem;
+}
+
+.create-post-form input {
+  margin-top: 0.5rem;
+  border-radius: 5px;
+}
+
+.create-post-form button {
+  margin-left: 21rem;
+  margin-top: 1rem;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  height: 2rem;
+  width: 4rem;
+}
+
+.form-container {
+  margin: auto;
+  width: 390px;
+  padding-bottom: 5rem;
+}
+
+.suggestion-list {
+  cursor: pointer;
+  border: 1px solid black;
+}
+
+.suggestion-list:hover {
+  background-color: lightgray;
+}
+
+.file-upload {
+  padding-left: 6rem;
+}

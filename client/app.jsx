@@ -1,5 +1,7 @@
 import React from 'react';
 import Home from './pages/home';
+import MyProfile from './pages/my-profile';
+import CreatePost from './components/create-post';
 import jwtDecode from 'jwt-decode';
 import NavBar from './components/navbar';
 import parseRoute from './lib/parse-route';
@@ -43,11 +45,17 @@ export default class App extends React.Component {
 
   renderPage() {
     const { route } = this.state;
-    if (route.path === '') {
+    if (route.path === 'home') {
       return <Home />;
     }
     if (route.path === 'sign-up' || route.path === 'sign-in' || route.path === 'sign-out') {
       return <Auth />;
+    }
+    if (route.path === 'my-profile') {
+      return <MyProfile />;
+    }
+    if (route.path === 'create-post') {
+      return <CreatePost />;
     }
   }
 

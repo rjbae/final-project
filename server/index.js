@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken');
 const errorMiddleWare = require('./error-middleware');
 const ClientError = require('./client-error');
 const authorizationMiddleware = require('./authorization-middleware');
+const uploadsMiddleware = require('./uploads-middleware');
 
 const db = new pg.Pool({
   connectionString: process.env.DATABASE_URL,
@@ -17,12 +18,13 @@ const db = new pg.Pool({
 
 const app = express();
 const publicPath = path.join(__dirname, 'public');
+
 app.use(express.json());
+
+app.use(express.static(publicPath));
 
 if (process.env.NODE_ENV === 'development') {
   app.use(require('./dev-middleware')(publicPath));
-} else {
-  app.use(express.static(publicPath));
 }
 
 app.post('/api/auth/sign-up', (req, res, next) => {
@@ -82,6 +84,43 @@ app.post('/api/auth/sign-in', (req, res, next) => {
 });
 
 app.use(authorizationMiddleware);
+
+app.post('/api/posts', uploadsMiddleware, (req, res, next) => {
+  const { userId } = req.user;
+  const { locationName, cameraUsed, feedback } = req.body;
+  if (!locationName || !cameraUsed || !feedback) {
+    throw new ClientError(400, 'These are required fields.');
+  }
+  const imgUrl = '/images/' + req.file.filename;
+  const sql = `
+    insert into "posts" ("userId", "photoUrl", "locationName", "cameraUsed", "feedback")
+          values ($1, $2, $3, $4, $5)
+      returning *
+  `;
+  const params = [userId, imgUrl, locationName, cameraUsed, feedback];
+  db.query(sql, params)
+    .then(result => {
+      const [post] = result.rows;
+      res.status(201).json(post);
+    })
+    .catch(err => next(err));
+});
+
+app.get('/api/posts', (req, res, next) => {
+  const { userId } = req.user;
+  const sql = `
+    select *
+      from "posts"
+     where "userId" = $1
+  `;
+  const params = [userId];
+  db.query(sql, params)
+    .then(result => {
+      res.json(result.rows);
+    })
+    .catch(err => next(err));
+});
+
 app.use(errorMiddleWare);
 
 app.listen(process.env.PORT, () => {
