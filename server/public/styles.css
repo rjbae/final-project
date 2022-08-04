@@ -4,13 +4,14 @@
 
 .home-img-container {
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
   padding: 2rem;
 }
 
 .home-img {
-  height: 700px;
+  max-height: 800px;
+  max-width: 900px;
 }
 
 .search-container {
@@ -51,11 +52,13 @@
 .profile-header {
   margin-left: 2rem;
   margin-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 .post-header {
   margin-right: 2rem;
   margin-top: 1rem;
+  padding-bottom: 2rem;
 }
 
 .hidden {
@@ -117,4 +120,16 @@
 
 .file-upload {
   padding-left: 6rem;
+}
+
+.profile-posts {
+  width: 400px;
+  max-height: 300px;
+  object-fit: contain;
+  margin-bottom: 2rem;
+}
+
+.profile-container {
+  display: flex;
+  flex-wrap: wrap;
 }
