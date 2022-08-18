@@ -87,17 +87,17 @@ app.use(authorizationMiddleware);
 
 app.post('/api/posts', uploadsMiddleware, (req, res, next) => {
   const { userId } = req.user;
+  const fileUrl = req.file.location;
   const { locationName, cameraUsed, feedback } = req.body;
   if (!locationName || !cameraUsed || !feedback) {
     throw new ClientError(400, 'These are required fields.');
   }
-  const imgUrl = '/images/' + req.file.filename;
   const sql = `
     insert into "posts" ("userId", "photoUrl", "locationName", "cameraUsed", "feedback")
           values ($1, $2, $3, $4, $5)
       returning *
   `;
-  const params = [userId, imgUrl, locationName, cameraUsed, feedback];
+  const params = [userId, fileUrl, locationName, cameraUsed, feedback];
   db.query(sql, params)
     .then(result => {
       const [post] = result.rows;

@@ -14,7 +14,6 @@ create schema "public";
 CREATE TABLE "public"."posts" (
     "postId" serial NOT NULL,
     "userId" integer NOT NULL,
-    "locationId" serial NOT NULL,
     "cameraUsed" TEXT NOT NULL,
     "locationName" TEXT NOT NULL,
     "feedback" TEXT NOT NULL,
@@ -24,12 +23,4 @@ CREATE TABLE "public"."posts" (
 ) WITH (
   OIDS=FALSE
 );
-CREATE TABLE "public"."locations" (
-    "locationId" serial NOT NULL,
-    "locationName" TEXT NOT NULL,
-    CONSTRAINT "locations_pk" PRIMARY KEY ("locationId")
-) WITH (
-  OIDS=FALSE
-);
 ALTER TABLE "posts" ADD CONSTRAINT "posts_fk0" FOREIGN KEY ("userId") REFERENCES "users"("userId");
--- ALTER TABLE "posts" ADD CONSTRAINT "posts_fk1" FOREIGN KEY ("locationId") REFERENCES "locations"("locationId");

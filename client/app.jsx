@@ -2,6 +2,7 @@ import React from 'react';
 import Home from './pages/home';
 import MyProfile from './pages/my-profile';
 import CreatePost from './components/create-post';
+// import UserPost from './components/user-post-details';
 import jwtDecode from 'jwt-decode';
 import NavBar from './components/navbar';
 import parseRoute from './lib/parse-route';

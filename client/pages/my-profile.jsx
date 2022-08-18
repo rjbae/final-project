@@ -40,9 +40,11 @@ export default class MyProfile extends React.Component {
       </div>
       <div className='profile-container justify-content-evenly align-items-center'>
             {this.state.posts.map(post =>
-            <div key={post.userId} className='row'>
+            <div key={post.postId} className='row'>
               <div className='col-sm-3'>
+                <a href='#post-details'>
                 <img src={post.photoUrl} className='profile-posts'></img>
+                </a>
               </div>
             </div>
             )}
