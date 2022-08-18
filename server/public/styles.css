@@ -74,6 +74,8 @@
 
 .placeholder-img {
   width: 400px;
+  max-height: 400px;
+  object-fit: contain;
 }
 
 .create-post-form label {
@@ -127,9 +129,14 @@
   max-height: 300px;
   object-fit: contain;
   margin-bottom: 2rem;
+  transition: 1s;
 }
 
 .profile-container {
   display: flex;
   flex-wrap: wrap;
+}
+
+.profile-posts:hover {
+  transform: scale(1.1);
 }
