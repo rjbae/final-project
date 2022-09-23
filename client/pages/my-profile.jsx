@@ -1,4 +1,5 @@
 import React from 'react';
+// import UserPost from '../components/user-post-details';
 
 export default class MyProfile extends React.Component {
   constructor(props) {
@@ -23,13 +24,15 @@ export default class MyProfile extends React.Component {
       .then(data => this.setState({ posts: data }));
   }
 
-  handleClick() {
-    if (!this.state.isClicked) {
-      this.setState({ isClicked: true });
-    } else {
-      this.setState({ isClicked: false });
-    }
-  }
+  // handleClick() {
+  //   if (!this.state.isClicked) {
+  //     return (
+  //       <>
+  //         <UserPost />
+  //       </>
+  //     );
+  //   }
+  // }
 
   render() {
     return (
@@ -42,7 +45,11 @@ export default class MyProfile extends React.Component {
             {this.state.posts.map(post =>
             <div key={post.postId} className='row'>
               <div className='col-sm-3'>
-                <a href='#post-details'>
+                <a href='#post-details' onClick={() => {
+                    <div key={post.postId}>
+                      <img src={post.photoUrl}></img>
+                    </div>;
+                }}>
                 <img src={post.photoUrl} className='profile-posts'></img>
                 </a>
               </div>
