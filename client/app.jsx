@@ -76,6 +76,5 @@ export default class App extends React.Component {
         </>
       </AppContext.Provider>
     );
-
   }
 }
